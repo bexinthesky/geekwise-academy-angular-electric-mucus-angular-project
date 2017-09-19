@@ -11,10 +11,8 @@
 				<img class="ui medium image" src="/assets/futurama-planet-express.jpg"><br />
 
 				<div class="ui large action input">
-					<input [(ngModel)]="userInput" type="text" value="" />
-					<button [ngStyle]="{ 'background-color' : userInput.toLowerCase() === 'electric mucus' ? 'aquamarine' : userInput }"
-					        [disabled]="userInput.toLowerCase() !== 'electric mucus'"
-					        class="ui large button">OK</button>
+					<input type="text" value="" />
+					<button class="ui large button">OK</button>
 				</div>
 			</div>
 		</div>
