@@ -1,10 +1,10 @@
 <div>
 	<h1>Angular</h1>
-	<div class="ui three column padded grid">
+	<div class="ui three column padded grid" *ngIf="waitForMe | async; else loading">
 		<div class="row">
 			<div class="column">
 				<h3 class="ui header">Type in the colour of Leela's ship, the Planet Express ship:
-					<div class="sub header">(the button should change colour based on your input; only enable the button when correct)</div>
+					<div class="sub header">{{ userInput }}</div>
 				</h3>
 			</div>
 			<div class="middle aligned column">
@@ -12,9 +12,20 @@
 
 				<div class="ui large action input">
 					<input [(ngModel)]="userInput" type="text" value="" />
-					<button [disabled]="userInput !== 'electric mucus'" [ngStyle]="{backgroundColor: userInput}" class="ui large button">OK</button>
+					<button (click)="addToPrevious(userInput)" class="ui large button">OK</button>
+				</div>
+				<div *ngFor="let answer of previousAnswers" class="ui segment">
+					{{ answer }}
 				</div>
 			</div>
 		</div>
 	</div>
+	<ng-template #loading>
+		<div>
+			<i class="asterisk loading icon"></i>
+		</div>
+	</ng-template>
 </div>
+
+<!-- <button [disabled]="userInput !== 'electric mucus'" [ngStyle]="{backgroundColor: userInput}" class="ui large button">OK</button> -->
+
